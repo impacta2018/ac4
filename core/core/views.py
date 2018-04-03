@@ -14,7 +14,7 @@ def contato(request):
 		return render(request, "contato.html")
 	else:
 		print("Acesso via POST\n")
-
+		
 		name = request.POST.get("name")
 		email = request.POST.get("email")
 		password = request.POST.get("password")
@@ -22,14 +22,15 @@ def contato(request):
 		est = request.POST.get("est")
 		obs = request.POST.get("obs")
 
-		print(
-			"Name: " + name + "\n" +
-			"Email: " + email + "\n" +
-			"Password: " + password + "\n" +
-			"Sexo: " + sexo + "\n" +
-			"Estado: " + est + "\n" +
-			"Observações: " + obs + "\n"
-		)
+		post = [str(name),' ',str(email),' ',str(password),' ',str(sexo),' ',str(est),' ',str(obs)]
+
+		# for i in post:
+		# 	print(i)
+
+		msg = ''.join(post)
+
+		print(msg)
+		return HttpResponse(msg)
 
 @csrf_exempt
 def login(request):
